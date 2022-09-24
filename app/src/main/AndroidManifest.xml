@@ -40,8 +40,7 @@
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -75,8 +74,8 @@
     <application
         android:name=".MainApp"
         android:allowBackup="false"
-        android:fullBackupContent="@xml/backup_config"
         android:dataExtractionRules="@xml/backup_rules"
+        android:fullBackupContent="@xml/backup_config"
         android:icon="@mipmap/ic_launcher"
         android:installLocation="internalOnly"
         android:label="@string/app_name"
@@ -87,8 +86,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ownCloud.Toolbar"
         android:usesCleartextTraffic="true"
-        tools:replace="android:allowBackup"
-        tools:ignore="UnusedAttribute">
+        tools:ignore="UnusedAttribute"
+        tools:replace="android:allowBackup">
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -308,10 +307,9 @@
         <provider
             android:name=".providers.DiskLruImageCacheFileProvider"
             android:authorities="@string/image_cache_provider_authority"
+            android:exported="true"
             android:grantUriPermissions="true"
-            android:permission="android.permission.MANAGE_DOCUMENTS"
-            android:exported="true">
-        </provider>
+            android:permission="android.permission.MANAGE_DOCUMENTS"></provider>
 
         <!-- Disable WorkManager initialization. Whoever designed this, should pay closer attention -->
         <!-- to "best before" dates in his fridge. -->
@@ -326,7 +324,6 @@
                 android:value="androidx.startup"
                 tools:node="remove" />
         </provider>
-
 
 
         <activity
@@ -492,7 +489,7 @@
         <package android:name="it.niedermann.nextcloud.deck" />
         <package android:name="it.niedermann.nextcloud.deck.play" />
         <package android:name="it.niedermann.nextcloud.deck.dev" />
-        <package android:name="at.bitfire.davdroid"/>
+        <package android:name="at.bitfire.davdroid" />
 
         <intent>
             <action android:name="android.intent.action.VIEW" />

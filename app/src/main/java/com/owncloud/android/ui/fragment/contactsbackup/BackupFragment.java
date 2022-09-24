@@ -37,7 +37,6 @@ import android.widget.Toast;
 import com.nextcloud.client.account.User;
 import com.nextcloud.client.di.Injectable;
 import com.nextcloud.client.jobs.BackgroundJobManager;
-import com.nextcloud.client.preferences.AppPreferences;
 import com.nextcloud.java.util.Optional;
 import com.owncloud.android.R;
 import com.owncloud.android.databinding.BackupFragmentBinding;
@@ -103,7 +102,6 @@ public class BackupFragment extends FileFragment implements DatePickerDialog.OnD
 
     private DatePickerDialog datePickerDialog;
 
-    private CompoundButton.OnCheckedChangeListener dailyBackupCheckedChangeListener;
     private CompoundButton.OnCheckedChangeListener contactsCheckedListener;
     private CompoundButton.OnCheckedChangeListener calendarCheckedListener;
     private User user;
@@ -213,7 +211,7 @@ public class BackupFragment extends FileFragment implements DatePickerDialog.OnD
     }
 
     private void setupCheckListeners() {
-        dailyBackupCheckedChangeListener = (buttonView, isChecked) -> {
+        CompoundButton.OnCheckedChangeListener dailyBackupCheckedChangeListener = (buttonView, isChecked) -> {
             if (checkAndAskForContactsReadPermission()) {
                 setAutomaticBackup(isChecked);
             }
@@ -324,6 +322,7 @@ public class BackupFragment extends FileFragment implements DatePickerDialog.OnD
     }
 
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final ContactsPreferenceActivity contactsPreferenceActivity = (ContactsPreferenceActivity) getActivity();
@@ -332,6 +331,7 @@ public class BackupFragment extends FileFragment implements DatePickerDialog.OnD
         switch (item.getItemId()) {
             case android.R.id.home:
                 if (showSidebar) {
+                    assert contactsPreferenceActivity != null;
                     if (contactsPreferenceActivity.isDrawerOpen()) {
                         contactsPreferenceActivity.closeDrawer();
                     } else {

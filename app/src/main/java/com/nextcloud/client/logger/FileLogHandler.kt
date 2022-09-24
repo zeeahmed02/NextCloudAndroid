@@ -24,6 +24,7 @@ import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 import java.nio.charset.Charset
+import kotlin.math.min
 
 /**
  * Very simple log writer with file rotations.
@@ -99,7 +100,7 @@ internal class FileLogHandler(private val logDir: File, private val logFilename:
             close()
         }
 
-        val existingLogFiles = logDir.listFiles().associate { it.name to it }
+        val existingLogFiles = logDir.listFiles().associateBy { it.name }
         existingLogFiles[rotationList.first()]?.delete()
 
         for (i in 0 until rotationList.size - 1) {
@@ -119,7 +120,7 @@ internal class FileLogHandler(private val logDir: File, private val logFilename:
         }
         val allLines = mutableListOf<String>()
         var size = 0L
-        for (i in 0..Math.min(rotated, rotationList.size - 1)) {
+        for (i in 0..min(rotated, rotationList.size - 1)) {
             val file = File(logDir, rotationList[i])
             if (!file.exists()) continue
             try {

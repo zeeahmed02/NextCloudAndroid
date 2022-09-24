@@ -23,7 +23,6 @@
 
 package com.owncloud.android.ui;
 
-import android.accounts.Account;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -63,8 +62,6 @@ public class TextDrawable extends Drawable {
      * the radius of the circular background to be rendered.
      */
     private float mRadius;
-
-    private boolean bigText = false;
 
     /**
      * Create a TextDrawable with the given radius.
@@ -158,6 +155,7 @@ public class TextDrawable extends Drawable {
     public void draw(@NonNull Canvas canvas) {
         canvas.drawCircle(mRadius, mRadius, mRadius, mBackground);
 
+        boolean bigText = false;
         if (bigText) {
             mTextPaint.setTextSize(1.8f * mRadius);
         }

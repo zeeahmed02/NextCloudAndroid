@@ -43,7 +43,6 @@ class ConnectivityServiceImpl implements ConnectivityService {
     private final UserAccountManager accountManager;
     private final ClientFactory clientFactory;
     private final GetRequestBuilder requestBuilder;
-    private final int sdkVersion;
 
     static class GetRequestBuilder implements Function1<String, GetMethod> {
         @Override
@@ -61,7 +60,6 @@ class ConnectivityServiceImpl implements ConnectivityService {
         this.accountManager = accountManager;
         this.clientFactory = clientFactory;
         this.requestBuilder = requestBuilder;
-        this.sdkVersion = sdkVersion;
     }
 
     @Override

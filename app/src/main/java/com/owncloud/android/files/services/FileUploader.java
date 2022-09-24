@@ -192,7 +192,6 @@ public class FileUploader extends Service
     private Looper mServiceLooper;
     private ServiceHandler mServiceHandler;
     private IBinder mBinder;
-    private OwnCloudClient mUploadClient;
     private Account mCurrentAccount;
     private FileDataStorageManager mStorageManager;
 
@@ -626,7 +625,7 @@ public class FileUploader extends Service
                 }   // else, reuse storage manager from previous operation
                 // always get client from client manager, to get fresh credentials in case of update
                 OwnCloudAccount ocAccount = new OwnCloudAccount(mCurrentAccount, this);
-                mUploadClient = OwnCloudClientManagerFactory.getDefaultSingleton().getClientFor(ocAccount, this);
+                OwnCloudClient mUploadClient = OwnCloudClientManagerFactory.getDefaultSingleton().getClientFor(ocAccount, this);
                 uploadResult = mCurrentUpload.execute(mUploadClient);
             } catch (Exception e) {
                 Log_OC.e(TAG, "Error uploading", e);

@@ -106,14 +106,14 @@ class PlayerService : Service() {
         val stop = Intent(this, PlayerService::class.java)
         stop.action = ACTION_STOP
         val pendingStop = PendingIntent.getService(this, 0, stop, PendingIntent.FLAG_IMMUTABLE)
-        notificationBuilder.addAction(0, getString(R.string.player_stop).toUpperCase(Locale.getDefault()), pendingStop)
+        notificationBuilder.addAction(0, getString(R.string.player_stop).uppercase(Locale.getDefault()), pendingStop)
 
         val toggle = Intent(this, PlayerService::class.java)
         toggle.action = ACTION_TOGGLE
         val pendingToggle = PendingIntent.getService(this, 0, toggle, PendingIntent.FLAG_IMMUTABLE)
         notificationBuilder.addAction(
             0,
-            getString(R.string.player_toggle).toUpperCase(Locale.getDefault()),
+            getString(R.string.player_toggle).uppercase(Locale.getDefault()),
             pendingToggle
         )
     }
@@ -160,7 +160,7 @@ class PlayerService : Service() {
 
     private fun startForeground(currentFile: OCFile) {
         val ticker = String.format(getString(R.string.media_notif_ticker), getString(R.string.app_name))
-        val content = getString(R.string.media_state_playing, currentFile.getFileName())
+        val content = getString(R.string.media_state_playing, currentFile.fileName)
         notificationBuilder.setSmallIcon(R.drawable.ic_play_arrow)
         notificationBuilder.setWhen(System.currentTimeMillis())
         notificationBuilder.setOngoing(true)

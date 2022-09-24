@@ -32,9 +32,9 @@ class EtmMigrations : EtmBaseFragment() {
         showStatus()
     }
 
-    fun showStatus() {
+    private fun showStatus() {
         val builder = StringBuilder()
-        val status = vm.migrationsStatus.toString().toLowerCase(Locale.US)
+        val status = vm.migrationsStatus.toString().lowercase(Locale.US)
         builder.append("Migration status: $status\n")
         val lastMigratedVersion = if (vm.lastMigratedVersion >= 0) {
             vm.lastMigratedVersion.toString()

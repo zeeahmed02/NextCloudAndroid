@@ -630,7 +630,7 @@ public class UploadsStorageManager extends Observable {
         if (result == 0) {
             Log_OC.v(TAG, "No upload was killed");
         } else {
-            Log_OC.w(TAG, Integer.toString(result) + " uploads where abruptly interrupted");
+            Log_OC.w(TAG, result + " uploads where abruptly interrupted");
             notifyObserversNow();
         }
 

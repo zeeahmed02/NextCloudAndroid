@@ -388,7 +388,6 @@ public class OperationsService extends Service {
 
         private ConcurrentLinkedQueue<Pair<Target, RemoteOperation>> mPendingOperations =
             new ConcurrentLinkedQueue<>();
-        private RemoteOperation mCurrentOperation;
         private Target mLastTarget;
         private OwnCloudClient mOwnCloudClient;
 
@@ -420,7 +419,7 @@ public class OperationsService extends Service {
             }
 
             if (next != null) {
-                mCurrentOperation = next.second;
+                RemoteOperation mCurrentOperation = next.second;
                 RemoteOperationResult result;
                 try {
                     /// prepare client object to send the request to the ownCloud server

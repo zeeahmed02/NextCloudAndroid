@@ -76,7 +76,6 @@ public class FilesServiceApiImpl implements FilesServiceApi {
         private final BaseActivity baseActivity;
         private final String fileUrl;
         private final User user;
-        private final UserAccountManager accountManager;
         private final ClientFactory clientFactory;
 
         private ReadRemoteFileTask(UserAccountManager accountManager,
@@ -88,7 +87,6 @@ public class FilesServiceApiImpl implements FilesServiceApi {
             this.baseActivity = baseActivity;
             this.fileUrl = fileUrl;
             this.user = accountManager.getUser();
-            this.accountManager = accountManager;
             this.clientFactory = clientFactory;
         }
 

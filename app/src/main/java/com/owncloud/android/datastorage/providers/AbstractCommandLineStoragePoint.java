@@ -24,6 +24,7 @@ package com.owncloud.android.datastorage.providers;
 import com.owncloud.android.lib.common.utils.Log_OC;
 
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
@@ -55,9 +56,9 @@ abstract class AbstractCommandLineStoragePoint extends AbstractStoragePointProvi
 
             process.waitFor();
             final InputStream is = process.getInputStream();
-            final byte buffer[] = new byte[1024];
+            final byte[] buffer = new byte[1024];
             while (is.read(buffer) != -1) {
-                s.append(new String(buffer, "UTF8"));
+                s.append(new String(buffer, StandardCharsets.UTF_8));
             }
             is.close();
         } catch (final Exception e) {

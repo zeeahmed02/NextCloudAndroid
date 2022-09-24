@@ -27,9 +27,9 @@
     android:background="@color/bg_default">
 
     <FrameLayout
+        android:id="@+id/toolbar_frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar_frame"
         app:layout_scrollFlags="scroll|enterAlways">
 
         <!-- sorting/layout bar -->

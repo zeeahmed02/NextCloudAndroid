@@ -86,10 +86,10 @@ internal class BackgroundJobManagerImpl(
         const val MAX_CONTENT_TRIGGER_DELAY_MS = 1500L
 
         const val TAG_PREFIX_NAME = "name"
-        const val TAG_PREFIX_USER = "user"
-        const val TAG_PREFIX_START_TIMESTAMP = "timestamp"
+        private const val TAG_PREFIX_USER = "user"
+        private const val TAG_PREFIX_START_TIMESTAMP = "timestamp"
         val PREFIXES = setOf(TAG_PREFIX_NAME, TAG_PREFIX_USER, TAG_PREFIX_START_TIMESTAMP)
-        const val NOT_SET_VALUE = "not set"
+        private const val NOT_SET_VALUE = "not set"
         const val PERIODIC_BACKUP_INTERVAL_MINUTES = 24 * 60L
         const val DEFAULT_PERIODIC_JOB_INTERVAL_MINUTES = 15L
         const val DEFAULT_IMMEDIATE_JOB_DELAY_SEC = 3L

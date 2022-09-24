@@ -98,7 +98,7 @@ class ContactsBackupWork(
         if (force || lastExecution + JOB_INTERVAL_MS < Calendar.getInstance().timeInMillis) {
             Log_OC.d(TAG, "start contacts backup job")
             val backupFolder: String = resources.getString(R.string.contacts_backup_folder) + OCFile.PATH_SEPARATOR
-            val daysToExpire: Int = applicationContext.getResources().getInteger(R.integer.contacts_backup_expire)
+            val daysToExpire: Int = applicationContext.resources.getInteger(R.integer.contacts_backup_expire)
             backupContact(user, backupFolder)
             // bind to Operations Service
             operationsServiceConnection = OperationsServiceConnection(
@@ -142,7 +142,7 @@ class ContactsBackupWork(
         }
         val filename = DateFormat.format("yyyy-MM-dd_HH-mm-ss", Calendar.getInstance()).toString() + ".vcf"
         Log_OC.d(TAG, "Storing: $filename")
-        val file = File(applicationContext.getCacheDir(), filename)
+        val file = File(applicationContext.cacheDir, filename)
         var fw: FileWriter? = null
         try {
             fw = FileWriter(file)
@@ -180,7 +180,7 @@ class ContactsBackupWork(
         if (daysToExpire > -1) {
             val storageManager = FileDataStorageManager(
                 user,
-                applicationContext.getContentResolver()
+                applicationContext.contentResolver
             )
             val backupFolder: OCFile = storageManager.getFileByPath(backupFolderString)
             val cal = Calendar.getInstance()
@@ -216,7 +216,7 @@ class ContactsBackupWork(
         var inputStream: InputStream? = null
         var inputStreamReader: InputStreamReader? = null
         try {
-            inputStream = applicationContext.getContentResolver().openInputStream(uri)
+            inputStream = applicationContext.contentResolver.openInputStream(uri)
             val buffer = CharArray(BUFFER_SIZE)
             val stringBuilder = StringBuilder()
             if (inputStream != null) {

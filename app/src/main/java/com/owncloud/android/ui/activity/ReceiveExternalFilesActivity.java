@@ -99,6 +99,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -120,7 +121,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -163,7 +163,7 @@ public class ReceiveExternalFilesActivity extends FileActivity
     private String mSubjectText;
     private String mExtraText;
 
-    private final static Charset FILENAME_ENCODING = Charset.forName("UTF-8");
+    private final static Charset FILENAME_ENCODING = StandardCharsets.UTF_8;
 
     private ViewGroup mEmptyListContainer;
     private TextView mEmptyListMessage;
@@ -401,7 +401,7 @@ public class ReceiveExternalFilesActivity extends FileActivity
                 mFileCategory = CATEGORY_URL;
             } else if (isIntentFromGoogleMap(subjectText, extraText)) {
                 String str = getString(R.string.upload_file_dialog_filetype_googlemap_shortcut);
-                String texts[] = extraText.split("\n");
+                String[] texts = extraText.split("\n");
                 mText.add(internetShortcutUrlText(texts[2]));
                 mFilenameBase.add(texts[0]);
                 mFilenameSuffix.add(URL_FILE_SUFFIX);
@@ -538,7 +538,7 @@ public class ReceiveExternalFilesActivity extends FileActivity
         }
 
         private boolean isIntentFromGoogleMap(String subjectText, String extraText) {
-            String texts[] = extraText.split("\n");
+            String[] texts = extraText.split("\n");
             if (texts.length != EXTRA_TEXT_LENGTH) {
                 return false;
             }

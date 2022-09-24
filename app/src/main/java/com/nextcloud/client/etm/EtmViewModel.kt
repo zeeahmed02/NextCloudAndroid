@@ -121,9 +121,9 @@ class EtmViewModel @Inject constructor(
     val accounts: List<AccountData> get() {
         val accountType = resources.getString(R.string.account_type)
         return platformAccountManager.getAccountsByType(accountType).map { account ->
-            val userData: Map<String, String?> = ACCOUNT_USER_DATA_KEYS.map { key ->
-                key to platformAccountManager.getUserData(account, key)
-            }.toMap()
+            val userData: Map<String, String?> = ACCOUNT_USER_DATA_KEYS.associateWith { key ->
+                platformAccountManager.getUserData(account, key)
+            }
             AccountData(account, userData)
         }
     }

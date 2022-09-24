@@ -42,7 +42,7 @@ class PredefinedStatusViewHolder(private val binding: PredefinedStatusBinding) :
             binding.clearAt.text = context.getString(R.string.dontClear)
         } else {
             val clearAt = status.clearAt!!
-            if (clearAt.type.equals("period")) {
+            if (clearAt.type == "period") {
                 binding.clearAt.text = DisplayUtils.getRelativeTimestamp(
                     context,
                     System.currentTimeMillis() + clearAt.time.toInt() * ONE_SECOND_IN_MILLIS,
@@ -50,7 +50,7 @@ class PredefinedStatusViewHolder(private val binding: PredefinedStatusBinding) :
                 )
             } else {
                 // end-of
-                if (clearAt.time.equals("day")) {
+                if (clearAt.time == "day") {
                     binding.clearAt.text = context.getString(R.string.today)
                 }
             }

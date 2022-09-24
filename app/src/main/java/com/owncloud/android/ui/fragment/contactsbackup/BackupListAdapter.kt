@@ -195,7 +195,7 @@ class BackupListAdapter(
         notifyDataSetChanged()
     }
 
-    fun bindContactViewHolder(holder: ContactItemViewHolder, position: Int) {
+    private fun bindContactViewHolder(holder: ContactItemViewHolder, position: Int) {
         val vCard = contacts[position]
 
         setChecked(checkedVCards.contains(position), holder.binding.name)

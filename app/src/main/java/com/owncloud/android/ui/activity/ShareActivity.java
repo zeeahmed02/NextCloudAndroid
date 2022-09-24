@@ -161,10 +161,10 @@ public class ShareActivity extends FileActivity {
         super.onRemoteOperationFinish(operation, result);
 
         if (result.isSuccess() ||
-                (operation instanceof GetSharesForFileOperation &&
-                        result.getCode() == RemoteOperationResult.ResultCode.SHARE_NOT_FOUND
-                )
-                ) {
+            (operation instanceof GetSharesForFileOperation &&
+                result.getCode() == RemoteOperationResult.ResultCode.SHARE_NOT_FOUND
+            )
+        ) {
             Log_OC.d(TAG, "Refreshing view on successful operation or finished refresh");
             refreshSharesFromStorageManager();
         }
@@ -177,7 +177,7 @@ public class ShareActivity extends FileActivity {
 
         FileDetailSharingFragment shareFileFragment = getShareFileFragment();
         if (shareFileFragment != null
-                && shareFileFragment.isAdded()) {   // only if added to the view hierarchy!!
+            && shareFileFragment.isAdded()) {   // only if added to the view hierarchy!!
             shareFileFragment.refreshCapabilitiesFromDB();
             shareFileFragment.refreshSharesFromDB();
         }

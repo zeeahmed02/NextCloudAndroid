@@ -29,9 +29,9 @@ public enum MediaFolderType {
     IMAGE(1),
     VIDEO(2);
 
-    private Integer id;
+    private final Integer id;
 
-    private static SparseArray<MediaFolderType> reverseMap = new SparseArray<>(3);
+    private static final SparseArray<MediaFolderType> reverseMap = new SparseArray<>(3);
 
     static {
         reverseMap.put(CUSTOM.getId(), CUSTOM);

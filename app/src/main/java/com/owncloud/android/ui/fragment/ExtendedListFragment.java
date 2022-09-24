@@ -111,8 +111,6 @@ public class ExtendedListFragment extends Fragment implements
     public static final float minColumnSize = 2.0f;
 
     private int maxColumnSize = 5;
-    private int maxColumnSizePortrait = 5;
-    private int maxColumnSizeLandscape = 10;
 
     @Inject AppPreferences preferences;
     @Inject UserAccountManager accountManager;
@@ -679,8 +677,10 @@ public class ExtendedListFragment extends Fragment implements
         super.onConfigurationChanged(newConfig);
 
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            int maxColumnSizeLandscape = 10;
             maxColumnSize = maxColumnSizeLandscape;
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            int maxColumnSizePortrait = 5;
             maxColumnSize = maxColumnSizePortrait;
         }
 

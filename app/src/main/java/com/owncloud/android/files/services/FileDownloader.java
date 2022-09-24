@@ -106,7 +106,6 @@ public class FileDownloader extends Service
     private Looper mServiceLooper;
     private ServiceHandler mServiceHandler;
     private IBinder mBinder;
-    private OwnCloudClient mDownloadClient;
     private Optional<User> currentUser = Optional.empty();
     private FileDataStorageManager mStorageManager;
 
@@ -466,8 +465,8 @@ public class FileDownloader extends Service
                     // always get client from client manager, to get fresh credentials in case
                     // of update
                     OwnCloudAccount ocAccount = currentDownloadUser.get().toOwnCloudAccount();
-                    mDownloadClient = OwnCloudClientManagerFactory.getDefaultSingleton().
-                            getClientFor(ocAccount, this);
+                    OwnCloudClient mDownloadClient = OwnCloudClientManagerFactory.getDefaultSingleton().
+                        getClientFor(ocAccount, this);
 
 
                     /// perform the download

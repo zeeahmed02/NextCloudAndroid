@@ -39,7 +39,7 @@ import java.io.File
 class DownloadTask(
     val context: Context,
     val contentResolver: ContentResolver,
-    val clientProvider: () -> OwnCloudClient
+    private val clientProvider: () -> OwnCloudClient
 ) {
 
     data class Result(val file: OCFile, val success: Boolean)
@@ -79,20 +79,20 @@ class DownloadTask(
     }
 
     private fun saveDownloadedFile(op: DownloadFileOperation, storageManager: FileDataStorageManager): OCFile {
-        val file = storageManager.getFileById(op.getFile().getFileId()) as OCFile
+        val file = storageManager.getFileById(op.file.fileId) as OCFile
         val syncDate = System.currentTimeMillis()
         file.lastSyncDateForProperties = syncDate
         file.lastSyncDateForData = syncDate
         file.isUpdateThumbnailNeeded = true
-        file.modificationTimestamp = op.getModificationTimestamp()
-        file.modificationTimestampAtLastSyncForData = op.getModificationTimestamp()
-        file.etag = op.getEtag()
-        file.mimeType = op.getMimeType()
-        file.storagePath = op.getSavePath()
-        file.fileLength = File(op.getSavePath()).length()
-        file.remoteId = op.getFile().getRemoteId()
+        file.modificationTimestamp = op.modificationTimestamp
+        file.modificationTimestampAtLastSyncForData = op.modificationTimestamp
+        file.etag = op.etag
+        file.mimeType = op.mimeType
+        file.storagePath = op.savePath
+        file.fileLength = File(op.savePath).length()
+        file.remoteId = op.file.remoteId
         storageManager.saveFile(file)
-        if (MimeTypeUtil.isMedia(op.getMimeType())) {
+        if (MimeTypeUtil.isMedia(op.mimeType)) {
             FileDataStorageManager.triggerMediaScan(file.storagePath)
         }
         return file

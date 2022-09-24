@@ -141,8 +141,8 @@ internal class PlayerStateMachine(initialState: State, private val delegate: Del
 
         config.configure(State.RUNNING_INITIAL)
             .substateOf(State.RUNNING)
-            .permitIf(Event.IMMEDIATE_TRANSITION, State.DOWNLOADING, { !delegate.isDownloaded })
-            .permitIf(Event.IMMEDIATE_TRANSITION, State.PREPARING, { delegate.isDownloaded })
+            .permitIf(Event.IMMEDIATE_TRANSITION, State.DOWNLOADING) { !delegate.isDownloaded }
+            .permitIf(Event.IMMEDIATE_TRANSITION, State.PREPARING) { delegate.isDownloaded }
             .onEntry(this::immediateTransition)
 
         config.configure(State.DOWNLOADING)

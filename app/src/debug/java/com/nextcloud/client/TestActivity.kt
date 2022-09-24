@@ -47,7 +47,7 @@ class TestActivity :
     SwipeRefreshLayout.OnRefreshListener,
     OnEnforceableRefreshListener {
     lateinit var fragment: Fragment
-    lateinit var secondaryFragment: Fragment
+    private lateinit var secondaryFragment: Fragment
 
     private lateinit var storage: FileDataStorageManager
     private lateinit var fileOperation: FileOperationsHelper

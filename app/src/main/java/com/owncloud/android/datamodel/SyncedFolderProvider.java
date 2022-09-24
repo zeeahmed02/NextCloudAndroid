@@ -226,7 +226,7 @@ public class SyncedFolderProvider extends Observable {
         return mContentResolver.delete(
                 ProviderMeta.ProviderTableMeta.CONTENT_URI_SYNCED_FOLDERS,
                 ProviderMeta.ProviderTableMeta.SYNCED_FOLDER_ACCOUNT + " = ?",
-                new String[]{String.valueOf(user.getAccountName())}
+                new String[]{user.getAccountName()}
         );
     }
 

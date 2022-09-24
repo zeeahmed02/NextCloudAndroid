@@ -35,7 +35,7 @@ import com.owncloud.android.R
 object ErrorFormat {
 
     /** Error code for specific messages - see regular error codes at [MediaPlayer]  */
-    const val OC_MEDIA_ERROR = 0
+    private const val OC_MEDIA_ERROR = 0
 
     @JvmStatic
     fun toString(context: Context?, what: Int, extra: Int): String {

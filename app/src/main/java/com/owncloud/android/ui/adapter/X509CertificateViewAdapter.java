@@ -100,30 +100,30 @@ public class X509CertificateViewAdapter implements SslUntrustedCertDialog.Certif
     @NonNull
     private String getDigestString(Context context, byte[] cert) {
         return getDigestHexBytesWithColonsAndNewLines(context, "SHA-256", cert)
-                + getDigestHexBytesWithColonsAndNewLines(context, "SHA-1", cert)
-                + getDigestHexBytesWithColonsAndNewLines(context, "MD5", cert);
+            + getDigestHexBytesWithColonsAndNewLines(context, "SHA-1", cert)
+            + getDigestHexBytesWithColonsAndNewLines(context, "MD5", cert);
     }
 
-    private String getDigestHexBytesWithColonsAndNewLines(Context context, final String digestType, final byte [] cert) {
+    private String getDigestHexBytesWithColonsAndNewLines(Context context, final String digestType, final byte[] cert) {
         final byte[] rawDigest;
         final String newLine = System.getProperty("line.separator");
 
         rawDigest = getDigest(digestType, cert);
 
-        if ( rawDigest == null) {
+        if (rawDigest == null) {
             return digestType + ":" + newLine + context.getString(R.string.digest_algorithm_not_available) + newLine + newLine;
         }
 
         final StringBuilder hex = new StringBuilder(3 * rawDigest.length);
 
         for (final byte b : rawDigest) {
-           final int hiVal = (b & 0xF0) >> 4;
-           final int loVal = b & 0x0F;
-           hex.append((char) ('0' + (hiVal + (hiVal / 10 * 7))));
-           hex.append((char) ('0' + (loVal + (loVal / 10 * 7))));
-           hex.append(':');
+            final int hiVal = (b & 0xF0) >> 4;
+            final int loVal = b & 0x0F;
+            hex.append((char) ('0' + (hiVal + (hiVal / 10 * 7))));
+            hex.append((char) ('0' + (loVal + (loVal / 10 * 7))));
+            hex.append(':');
         }
-        return digestType + ":" + newLine + hex.toString().replaceFirst("\\:$","") + newLine + newLine;
+        return digestType + ":" + newLine + hex.toString().replaceFirst("\\:$", "") + newLine + newLine;
     }
 
     private void showValidity(Date notBefore, Date notAfter, @NonNull SslUntrustedCertLayoutBinding binding) {

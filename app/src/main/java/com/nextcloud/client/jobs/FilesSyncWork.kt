@@ -148,7 +148,7 @@ class FilesSyncWork(
         }
         val paths = filesystemDataProvider.getFilesForUpload(
             syncedFolder.localPath,
-            java.lang.Long.toString(syncedFolder.id)
+            syncedFolder.id.toString()
         )
         for (path in paths) {
             file = File(path)
@@ -193,7 +193,7 @@ class FilesSyncWork(
             )
             filesystemDataProvider.updateFilesystemFileAsSentForUpload(
                 path,
-                java.lang.Long.toString(syncedFolder.id)
+                syncedFolder.id.toString()
             )
         }
     }

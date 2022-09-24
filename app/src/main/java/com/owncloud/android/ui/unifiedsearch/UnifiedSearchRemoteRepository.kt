@@ -112,7 +112,7 @@ class UnifiedSearchRemoteRepository(
         }
     }
 
-    fun fetchProviders(onResult: (SearchProviders) -> Unit, onError: (Throwable) -> Unit) {
+    private fun fetchProviders(onResult: (SearchProviders) -> Unit, onError: (Throwable) -> Unit) {
         Log_OC.d(this, "fetchProviders")
         if (this.providers != null) {
             onResult(this.providers!!)

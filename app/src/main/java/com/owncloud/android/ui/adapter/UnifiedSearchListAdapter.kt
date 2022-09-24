@@ -103,7 +103,7 @@ class UnifiedSearchListAdapter(
     }
 
     internal class EmptyViewHolder(binding: UnifiedSearchEmptyBinding) :
-        SectionedViewHolder(binding.getRoot())
+        SectionedViewHolder(binding.root)
 
     override fun getSectionCount(): Int {
         return sections.size

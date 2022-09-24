@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ownCloud Android client application
 
   Copyright (C) 2015 ownCloud Inc.
@@ -28,10 +27,10 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/local_files_list_container"
         android:name="com.owncloud.android.ui.fragment.LocalFileListFragment"
-        android:tag="local_files_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:tag="local_files_list" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,35 +40,35 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:src="@drawable/uploader_list_separator"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null"
+            android:src="@drawable/uploader_list_separator" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/upload_options"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/standard_half_padding"
-        android:paddingBottom="0dp"
+        android:orientation="vertical"
         android:paddingLeft="@dimen/standard_padding"
-        android:paddingRight="@dimen/standard_padding">
+        android:paddingTop="@dimen/standard_half_padding"
+        android:paddingRight="@dimen/standard_padding"
+        android:paddingBottom="0dp">
 
         <TextView
+            android:id="@+id/upload_files_upload_files_behaviour_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/standard_half_padding"
             android:text="@string/uploader_upload_files_behaviour"
-            android:id="@+id/upload_files_upload_files_behaviour_text"
             android:textColor="@color/text_color"
-            android:textStyle="bold"
-            android:paddingBottom="@dimen/standard_half_padding"/>
+            android:textStyle="bold" />
 
         <Spinner
+            android:id="@+id/upload_files_spinner_behaviour"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/upload_files_spinner_behaviour"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -81,12 +80,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/upload_files_btn_cancel"
+            style="@style/OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/standard_half_margin"
             android:layout_weight="1"
             android:text="@string/common_cancel"
-            style="@style/OutlinedButton"
             app:cornerRadius="@dimen/button_corner_radius" />
 
         <com.google.android.material.button.MaterialButton
@@ -98,6 +97,6 @@
             android:theme="@style/Button.Primary"
             app:cornerRadius="@dimen/button_corner_radius" />
 
-	</LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
